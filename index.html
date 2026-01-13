@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meşeli Meyhane</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="tools">
+  <div class="lang-switch">
+    <button onclick="setLang('tr')" class="active">TR</button>
+    <button onclick="setLang('ar')">العربية</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+  <a href="admin.html" class="admin-link">⚙️</a>
+</div>
+
+<header>
+  <h1 data-key="brand">Meşeli Meyhane</h1>
+  <nav>
+    <a href="#menu" data-key="menu">Menü</a>
+    <a href="#events" data-key="events">Canlı Müzik</a>
+    <a href="#contact" data-key="contact">İletişim</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2 data-key="hero">Geleneksel Meyhane Kültürü</h2>
+</section>
+
+<section id="menu">
+  <h2 data-key="cold">Soğuk Mezeler</h2>
+  <p data-key="coldPrice">300₺ / Yarım 150₺</p>
+  <div class="menu-grid">
+    <div class="card"><h4 data-key="c1">Yoğurtlu Semizotu</h4></div>
+    <div class="card"><h4 data-key="c2">Cacık</h4></div>
+    <div class="card"><h4 data-key="c3">Fava</h4></div>
+    <div class="card"><h4 data-key="c4">Atom</h4></div>
+    <div class="card"><h4 data-key="c5">Şakşuka</h4></div>
+    <div class="card"><h4 data-key="c6">Pancar</h4></div>
+    <div class="card"><h4 data-key="c7">Turşu</h4></div>
+    <div class="card"><h4 data-key="c8">Humus</h4></div>
+  </div>
+
+  <h2 data-key="hot">Sıcak Mezeler</h2>
+  <p data-key="hotPrice">400₺ / Yarım 200₺</p>
+  <div class="menu-grid">
+    <div class="card"><h4 data-key="h1">Kara Lahana</h4></div>
+    <div class="card"><h4 data-key="h2">Hellim Mantar</h4></div>
+    <div class="card"><h4 data-key="h3">Çıtır Fava</h4></div>
+  </div>
+
+  <h2 data-key="main">Ana Yemekler</h2>
+  <h3 data-key="et">Et</h3>
+  <div class="menu-grid">
+    <div class="card"><h4 data-key="e1">Kuzu Şiş</h4></div>
+    <div class="card"><h4 data-key="e2">Adana</h4></div>
+    <div class="card"><h4 data-key="e3">Izgara Köfte</h4></div>
+    <div class="card"><h4 data-key="e4">Kuzu Pirzola</h4></div>
+  </div>
+  <h3 data-key="tavuk">Tavuk</h3>
+  <div class="menu-grid">
+    <div class="card"><h4 data-key="t1">Tavuk Şiş</h4></div>
+    <div class="card"><h4 data-key="t2">Tavuk Izgara</h4></div>
+    <div class="card"><h4 data-key="t3">Tavuk Kavurma</h4></div>
+  </div>
+  <h3 data-key="balik">Balık</h3>
+  <div class="menu-grid">
+    <div class="card"><h4 data-key="b1">Hamsi Tava</h4></div>
+    <div class="card"><h4 data-key="b2">Levrek Izgara</h4></div>
+  </div>
+</section>
+
+<section id="events">
+  <h2 data-key="music">Canlı Müzik</h2>
+  <p><strong data-key="day">Cumartesi</strong> <span data-key="time">20:00 – 00:00</span></p>
+  <button class="reserve" data-key="reserve" onclick="openModal()">Rezervasyon</button>
+</section>
+
+<section id="contact">
+  <h2 data-key="cont">İletişim</h2>
+  <p data-key="addr">📍 Kızılay / Ankara</p>
+  <p data-key="phone">☎️ +90 312 424 06 94</p>
+</section>
+
+<div id="resModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 data-key="resTitle">Rezervasyon Formu</h3>
+    <form onsubmit="sendRes(event)">
+      <input type="text" id="rName" required data-key-ph="namePh">
+      <input type="tel" id="rTel" required data-key-ph="telPh">
+      <input type="number" id="rGuest" min="1" max="20" required data-key-ph="guestPh">
+      <textarea id="rNote" rows="3" data-key-ph="notePh"></textarea>
+      <button type="submit" data-key="sendBtn">Gönder</button>
+    </form>
+  </div>
+</div>
+
+<footer>© 2026 Meşeli Meyhane</footer>
+
+<script src="lang.js"></script>
+<script>
+function openModal(){document.getElementById('resModal').style.display='flex';}
+function closeModal(){document.getElementById('resModal').style.display='none';}
+window.onclick=function(e){if(e.target.id==='resModal')closeModal();}
+function sendRes(e){
+  e.preventDefault();
+  const n=document.getElementById('rName').value,t=document.getElementById('rTel').value,g=document.getElementById('rGuest').value,m=document.getElementById('rNote').value;
+  const msg=`Rezervasyon:%0AAd: ${n}%0ATel: ${t}%0AKişi: ${g}%0ANot: ${m}`;
+  window.open(`https://wa.me/903124240694?text=${msg}`,"_blank");
+  closeModal();
+}
+</script>
+</body>
+</html>

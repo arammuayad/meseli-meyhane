@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Meşeli Meyhane</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="login-box" id="loginBox">
+  <h2>Admin Giriş</h2>
+  <form onsubmit="doLogin(event)">
+    <input type="text" id="user" placeholder="Kullanıcı" required>
+    <input type="password" id="pass" placeholder="Şifre" required>
+    <button type="submit">Giriş</button>
+  </form>
+</div>
+
+<div class="panel" id="panel" style="display:none">
+  <h2>Menü Yönetimi</h2>
+  <table id="menuTable" border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>TR</th><th>AR</th><th>EN</th><th>Fiyat (₺)</th><th>İşlem</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button onclick="addRow()">+ Yeni Ekle</button>
+  <button onclick="saveData()">Kaydet</button>
+  <a href="index.html">Siteye Dön</a>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
